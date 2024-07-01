@@ -1,6 +1,6 @@
 const { ObjectId } = require("mongodb");
 const { GraphQLError } = require("graphql");
-const cache = require("../config/redis");
+// const cache = require("../config/redis");
 
 const resolvers = {
   Query: {
@@ -11,16 +11,16 @@ const resolvers = {
 
         console.log(context.authentication(), `<<< all post`);
 
-        const postCache = await cache.get("all:posts");
+        // const postCache = await cache.get("all:posts");
 
-        if (postCache) {
-          return JSON.parse(postCache);
-        }
+        // if (postCache) {
+        //   return JSON.parse(postCache);
+        // }
 
         const allPosts = await db.collection("Posts").find().toArray();
         // console.log(allPosts);
 
-        await cache.set("all:posts", JSON.stringify(allPosts));
+        // await cache.set("all:posts", JSON.stringify(allPosts));
 
         return allPosts;
       } catch (error) {
@@ -99,7 +99,7 @@ const resolvers = {
         //     ...newPost
         //   });
 
-        await cache.del("all:posts");
+        // await cache.del("all:posts");
 
         return { message: "You added new post" };
       } catch (error) {

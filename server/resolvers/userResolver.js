@@ -44,11 +44,11 @@ const resolvers = {
       try {
         const { db } = context;
 
-        const postCache = await cache.get("all:users");
+        // const postCache = await cache.get("all:users");
 
-        if (postCache) {
-          return JSON.parse(postCache);
-        }
+        // if (postCache) {
+        //   return JSON.parse(postCache);
+        // }
 
         console.log(args.name, 1111111, `<< cari yang ini`);
 
@@ -80,7 +80,7 @@ const resolvers = {
           });
         }
 
-        await cache.set("all:users", JSON.stringify(find));
+        // await cache.set("all:users", JSON.stringify(find));
 
         return find;
       } catch (error) {
@@ -140,7 +140,7 @@ const resolvers = {
         // console.log(newUser,`<<, baaa`);
         // console.log(newUser.insertedId,`<<< insertedId`);
 
-        await cache.del("all:users");
+        // await cache.del("all:users");
 
         return {
           _id: newUser.insertedId,
