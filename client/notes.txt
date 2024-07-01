@@ -1,0 +1,4 @@
+route di navigation bisa pake params
+usenavigation dari react navigation/native
+
+npx expo start -- --reset-cache << kalo error depedencies not iterable
